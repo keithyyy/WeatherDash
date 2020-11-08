@@ -17,7 +17,7 @@
 
     <!-- Header section -->
     <div class="jumbotron py-3">
-        <h1 class="display-3"> <strong>Klimate with Keith</strong> </h1>
+        <h1 class="display-4"> <strong>Klimate with Keith</strong> </h1>
     </div>
 
     
@@ -26,13 +26,13 @@
         <div class="row">
 
             <!-- search & history section -->
-            <div class="col-sm-4 bg-light">
+            <div class="col-sm-4 bg-light rounded">
                 <h4 class="pt-2 text-center"><strong>Search for City</strong></h4>
 
                 <div class="input-group my-2">
-                    <input type="text" class="form-control" placeholder="Location" aria-label="User City" aria-describedby="basic-addon2">
+                    <input type="text" class="form-control" id="searchedCity" placeholder="Location" aria-label="User City" aria-describedby="basic-addon2">
                     <div class="input-group-append">
-                        <button class=" btn bg-primary text-light" id="search-button"><i class="fa fa-search"></i></button>
+                        <button class=" btn bg-primary text-light" id="searchButton"><i class="fa fa-search"></i></button>
                     </div>
                 </div>
 
@@ -40,7 +40,7 @@
                 <ul class="list-group">
 
                 </ul>
-                <button class="btn btn-primary" type="submit" id="clear">Clear</button>
+                <button class="btn btn-primary" type="submit" id="clearButton">Clear</button>
 
             </div>
 
@@ -52,10 +52,10 @@
                     
                     <div class="col-sm-12" id="currentWeather">
                         <h3 class="city-input my-2 bolder" id="currentCity"></h3>
-                        <p class="current" id="temperature">Temperature: </p>
-                        <p class="current" id="humidity">Humidity: </p>
-                        <p class="current" id="windSpeed">Wind Speed: </p>
-                        <p class="current" id="uvIndex">UV Index: </p>
+                        <p class="current" id="currentTemperature">Temperature: </p>
+                        <p class="current" id="currentHumidity">Humidity: </p>
+                        <p class="current" id="currentWindSpeed">Wind Speed: </p>
+                        <p class="current" id="currentUvIndex">UV Index: </p>
                     </div>
 
                 </div>
