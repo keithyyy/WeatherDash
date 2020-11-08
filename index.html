@@ -14,9 +14,102 @@
     
 </head>
 <body>
-    <header class="jumbotron py-3">
+
+    <!-- Header section -->
+    <div class="jumbotron py-3">
         <h1 class="display-3"> <strong>Klimate with Keith</strong> </h1>
-    </header>
+    </div>
+
+    
+    <div class="container">
+
+        <div class="row">
+
+            <!-- search & history section -->
+            <div class="col-sm-4 bg-light">
+                <h4 class="pt-2 text-center"><strong>Search for City</strong></h4>
+
+                <div class="input-group my-2">
+                    <input type="text" class="form-control" placeholder="Location" aria-label="User City" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class=" btn bg-primary text-light" id="search-button"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+
+                <!-- section for history to show up -->
+                <ul class="list-group">
+
+                </ul>
+                <button class="btn btn-primary" type="submit" id="clear">Clear</button>
+
+            </div>
+
+            <!-- weather section -->
+            <div class="col-sm-8">
+
+                <!-- current weather -->
+                <div class="row ml-2 border border-light rounded">
+                    
+                    <div class="col-sm-12" id="currentWeather">
+                        <h3 class="city-input my-2 bolder" id="currentCity"></h3>
+                        <p class="current" id="temperature">Temperature: </p>
+                        <p class="current" id="humidity">Humidity: </p>
+                        <p class="current" id="windSpeed">Wind Speed: </p>
+                        <p class="current" id="uvIndex">UV Index: </p>
+                    </div>
+
+                </div>
+
+                <!-- future weather forecast -->
+                <div class="col-sm-12" id="futureWeather">
+                    <h3 class="mt-3 bolder">5-Day Forecast:</h3>
+
+                    <div class="row">
+                        <div class="col-sm-2 bg-primary forecast text-white mx-2 p-2 rounded">
+                            <p id="futureDay1"></p>
+                            <p id="futureImg1"></p>
+                            <p id="futureTemp1">Temp: </p>
+                            <p id="futureTemp1">Humidity: </p>
+                        </div>
+                        <div class="col-sm-2 bg-primary forecast text-white mx-2 p-2 rounded">
+                            <p id="futureDay2"></p>
+                            <p id="futureImg2"></p>
+                            <p id="futureTemp2">Temp: </p>
+                            <p id="futureHumid2">Humidity: </p>
+                        </div>
+                        <div class="col-sm-2 bg-primary forecast text-white mx-2 p-2 rounded">
+                            <p id="futureDay3"></p>
+                            <p id="futureImg3"></p>
+                            <p id="futureTemp3">Temp: </p>
+                            <p id="futureHumid3">Humidity: </p>
+                        </div>
+                        <div class="col-sm-2 bg-primary forecast text-white mx-2 p-2 rounded">
+                            <p id="futureDay4"></p>
+                            <p id="futureImg4"></p>
+                            <p id="futureTemp4">Temp: </p>
+                            <p id="futureHumid4">Humidity: </p>
+                        </div>
+                        <div class="col-sm-2 bg-primary forecast text-white mx-2 p-2 rounded">
+                            <p id="futureDay5"></p>
+                            <p id="futureImg5"></p>
+                            <p id="futureTemp5">Temp: </p>
+                            <p id="futureHumid5">Humidity: </p>
+                        </div>
+                        
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
     
 </body>
 </html>
