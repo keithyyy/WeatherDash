@@ -34,7 +34,7 @@ function addHistory(c) {
 }
 
 function displayWeather(city) {
-    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
+    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&appid=" + apiKey;
 
     fetch(apiUrl)
         .then(function (response) {
@@ -44,8 +44,13 @@ function displayWeather(city) {
         .then(function (data) {
             console.log(data);
 
+            var currentDate = new Date(data.dt * 1000).toLocaleDateString();
+            $(currentCity).html(data.name+" ("+currentDate+")");
+            $(currentTemp).html(data.main.temp + " ° C");
+            $(currentHumidity).html(data.main.humidity+"%");
+            $(currentWS).html(data.wind.speed+"KM/H")
         
-            $(currentCity).html(data.name)
+
 
 
 
