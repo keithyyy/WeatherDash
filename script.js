@@ -12,14 +12,15 @@ var searchHis = [];
 
 var apiKey = "ef28f4f6c11b000f409a1416557dc4d7";
 
-var apiUrl = "api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
 
 
-function showWeather(event) {
+
+function whatCity(event) {
     event.preventDefault();
     city = searchedCity.val().trim();
     console.log(city);
     addHistory(city);
+    displayWeather(city);
     
 }
 
@@ -32,8 +33,37 @@ function addHistory(c) {
 
 }
 
+function displayWeather(city) {
+    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
+
+    fetch(apiUrl)
+        .then(function (response) {
+            return response.json();
+            
+        })
+        .then(function (data) {
+            console.log(data);
+
+        
+            $(currentCity).html(data.name)
+
+
+
+            
+
+            
+        })
+
+    // displaying current weather
+
+
+
+    // displaying the next 5 day forecast (use a for loop and DT is written in mil)
+    
+}
 
 
 
 
-$("#searchButton").on("click", showWeather);
+
+$("#searchButton").on("click", whatCity);
