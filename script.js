@@ -44,29 +44,47 @@ function displayWeather(city) {
         .then(function (data) {
             console.log(data);
 
+            // displaying current weather
             var currentDate = new Date(data.dt * 1000).toLocaleDateString();
             $(currentCity).html(data.name+" ("+currentDate+")");
             $(currentTemp).html(data.main.temp + " ° C");
             $(currentHumidity).html(data.main.humidity+"%");
-            $(currentWS).html(data.wind.speed+"KM/H")
+            $(currentWS).html(data.wind.speed+"KM/H"); 
+            
+            uvLat = data.coord.lat; 
+            uvLon = data.coord.lon;
+            displayUV(uvLat, uvLon);
         
 
-
-
-
             
+        });  
+};
 
-            
+// displaying UVindex
+function displayUV(lat,lon) {
+    var apiUvUrl = "http://api.openweathermap.org/data/2.5/uvi?lat=" +lat+"&lon="+lon+"&appid=" + apiKey;
+
+    fetch(apiUvUrl)
+        .then(function (response) {
+            return response.json()
         })
+        .then(function (data) {
+            console.log(data)
+            $(currentUv).html(data.value)
+            $(currentUv).addClass("rounded px-2 py-2")
 
-    // displaying current weather
-
+            if (data.value < 2) {
+                $(currentUv).addClass("bg-success")
+            } else if (data.value > 5) {
+                $(currentUv).addClass("bg-danger")
+            } else {
+                $(currentUv).addClass("bg-warning")
+            }
+        })
+}
 
 
     // displaying the next 5 day forecast (use a for loop and DT is written in mil)
-    
-}
-
 
 
 
