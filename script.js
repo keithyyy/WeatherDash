@@ -107,8 +107,7 @@ function forecastWeather(city) {
                 
             }
 
-            var tomorrow = new Date((data.list[8].dt)*1000)
-            // console.log(tomorrow)
+
 
 })} 
 
