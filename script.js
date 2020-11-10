@@ -54,6 +54,7 @@ function displayWeather(city) {
             uvLat = data.coord.lat; 
             uvLon = data.coord.lon;
             displayUV(uvLat, uvLon);
+            forecastWeather(data.name)
         
 
             
@@ -82,10 +83,34 @@ function displayUV(lat,lon) {
             }
         })
 }
-
-
     // displaying the next 5 day forecast (use a for loop and DT is written in mil)
 
+function forecastWeather(city) {
+    var forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=metric&appid=" + apiKey;
+
+    fetch(forecastUrl)
+        .then(function (response) {
+            return response.json();
+            
+        })
+        .then(function (data) {
+            console.log(data);
+
+            for (let i=1; i < 6; i++) {
+                // 5 day forecast, increments every 3 hours. Have to multiply by 8 to get next 24hr
+                var futureDate = new Date((data.list[(i*8)-1].dt)*1000).toLocaleDateString();
+                
+                
+                $("#futureDay"+i).html(futureDate)
+                $("#futureTemp"+i).html(data.list[(i*8)-1].main.temp + "°C")
+                $("#futureHumid"+i).html(data.list[(i*8)-1].main.humidity + "%")
+                
+            }
+
+            var tomorrow = new Date((data.list[8].dt)*1000)
+            // console.log(tomorrow)
+
+})} 
 
 
 
