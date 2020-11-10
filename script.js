@@ -19,16 +19,19 @@ function whatCity(event) {
     event.preventDefault();
     city = searchedCity.val().trim();
     console.log(city);
+
     addHistory(city);
     displayWeather(city);
     
 }
 
-function addHistory(c) {
-    var historyList = $("<li>" + c + "</li>");
+function addHistory(city) {
+    var historyList = $("<li>" + city + "</li>");
     $(historyList).addClass("list-group-item")
-    $(historyList).attr("data-value", c);
+    $(historyList).attr("data-value", city);
     $(".list-group").prepend(historyList);
+    searchHis.push(city)
+    localStorage.setItem("cityname", JSON.stringify(searchHis));
 
 
 }
@@ -112,6 +115,22 @@ function forecastWeather(city) {
 
 })} 
 
+function loadSearch(event) {
+    var listedCity = event.target;
+    if (event.target.matches("li")) {
+        city=listedCity.textContent.trim();
+        displayWeather(city)
+    }
+
+
+}
+
+function clearSearch(event) {
+    event.preventDefault();
+    document.location.reload()
+}
 
 
 $("#searchButton").on("click", whatCity);
+$(document).on("click", loadSearch);
+$("#clearButton").on("click", clearSearch);
