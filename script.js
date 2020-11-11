@@ -49,7 +49,9 @@ function displayWeather(city) {
 
             // displaying current weather
             var currentDate = new Date(data.dt * 1000).toLocaleDateString();
-            $(currentCity).html(data.name+" ("+currentDate+")");
+            var weathericon = data.weather[0].icon;
+            var iconUrl = "https://openweathermap.org/img/wn/"+weathericon +"@2x.png";
+            $(currentCity).html(data.name+" ("+currentDate+")" + "<img src="+iconUrl+">");
             $(currentTemp).html(data.main.temp + " ° C");
             $(currentHumidity).html(data.main.humidity+"%");
             $(currentWS).html(data.wind.speed+"KM/H"); 
@@ -102,9 +104,11 @@ function forecastWeather(city) {
             for (let i=1; i < 6; i++) {
                 // 5 day forecast, increments every 3 hours. Have to multiply by 8 to get next 24hr
                 var futureDate = new Date((data.list[(i*8)-1].dt)*1000).toLocaleDateString();
-                
+                var weatherCode = data.list[(i*8)-1].weather[0].icon;
+                var iconUrl = "https://openweathermap.org/img/wn/"+ weatherCode +".png";
                 
                 $("#futureDay"+i).html(futureDate)
+                $("#futureImg"+i).html("<img src="+iconUrl+">");
                 $("#futureTemp"+i).html(data.list[(i*8)-1].main.temp + "°C")
                 $("#futureHumid"+i).html(data.list[(i*8)-1].main.humidity + "%")
                 
